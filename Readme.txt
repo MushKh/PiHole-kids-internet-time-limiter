@@ -47,7 +47,7 @@ By doing this we realize that in case of Pi-Hole updates related to this page th
 	in putty or any other command line interface for Rpi run
 	sudo nano /etc/rc.local
 	add this line at the end of file
-	python3 /home/pi/LimiterProj/InternetLimiter.py &
+	python3 /var/www/html/myserver/InternetLimiter.py &
 	Then Ctl+O, Ctr+X
 	
 PS. Script written such a way that it will restart itself at 12PM. This will reset current time limit calculation. All changes to times i.e. Start times and Stop times are written in Log files. Log files can be reviewed by clicking "List Logs" on Pi-Hole Dashboard.
