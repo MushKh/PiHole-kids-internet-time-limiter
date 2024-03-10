@@ -71,8 +71,8 @@ if __name__ == "__main__":
 
     #Pi_hole commands
     #Disabling the group will enable the Internet and vice versa
-    comm_DisGroup = "sudo /etc/pihole/./setGroupStatus.sh Ani_Group disable"
-    comm_EnGroup = "sudo /etc/pihole/./setGroupStatus.sh Ani_Group enable"
+    comm_DisGroup = "sudo /etc/pihole/./setGroupStatus.sh Kids_Group disable"
+    comm_EnGroup = "sudo /etc/pihole/./setGroupStatus.sh Kids_Group enable"
 
     UpdateGravity = "sudo pihole updateGravity"
 
