@@ -1,7 +1,7 @@
 Installation procedure.
 
 1. Assuming that you have Ph-Hole installed on Raspberry Pi and have access to it thru SSH.
-For easy access to all Ph-Hole folders and files it's best to have WinSCP installed. It need to connect to Rpi with SSH (Enable SSH from Rpi). 
+For easy access to all Ph-Hole folders and files it's best to have WinSCP installed. It need to connect to Rpi with SSH (Enable SSH from Rpi). Also there will be needed to download and install putty for command-line access.
 Also Pi-Hole IP need to be configured in local Modem/Router as primary DNS server. I also disable secondary DNS server in router to avoid bypassing Pi-Hole.
 
 2. In Pi-Hole under /var/www/html/admin/  modify  index.php page. Remove original page and put index.php modified file from repo. 
@@ -13,11 +13,14 @@ By doing this we realize that in case of Pi-Hole updates related to this page th
 4. In InternetLimiter.py  script you need to add Pi-Hole IP address and an IP address on which you want activity/time to be monitored and calculated. Find below rows in script file and replace x.x with your kid local IP address and yy with Pi-Hole local IP.
     ip_address = '192.168.x.x'    
     pi_hole_ip = '192.168.y.y'
+
 5. In Pi-Hole open  /etc/pihole/setupVars.conf (WEBPASSWORD) and get the token from (WEBPASSWORD) filed then copy/replace it to 
 	auth_token = xxx 
 	line in InternetLimiter.py file. This will allow script to make changes in your Pi-Hole.
 
 6. Create /var/www/html/myserver folder in Pi-Hole and copy InternetLimiter.py to it.
+	Then enter command below in putty to set InternetLimiter.py with executable priveledges.
+	sudo chmod +x InternetLimiter.py
 
 7. Configring Pi-Hole
 	A) Using Pi-Hole web interface open Groups page and create "Kids_Group" in it.
@@ -35,6 +38,18 @@ By doing this we realize that in case of Pi-Hole updates related to this page th
 	Go to Settings->DHCP page and set "Enable DHCP" tickbox. Also do not forget to disable DHCP server functionality in 	your Modem/Router to avoid collisions.
 
 8. Do not forget to change default Pi-Hole password from "Raspberry" to something else. Some kids are smarter that we think.
+
+9. Configure Rpi to start InternetLimiter.py script at start-up. This can be don by several methods. This one is also working well. 
+	in putty or any other command line interface for Rpi run
+	sudo nano /etc/rc.local
+	add this line at the end of file
+	python3 /home/pi/LimiterProj/InternetLimiter.py &
+	Then Ctl+O, Ctr+X
+	
+PS. Script written such a way that it will restart itself at 12PM. This will reset current time limit calculation. All changes to times i.e. Start times and Stop times are written in Log files. Log files can be reviewed by clicking "List Logs" on Pi-Hole Dashboard.
+
+
+	
 
 
 
