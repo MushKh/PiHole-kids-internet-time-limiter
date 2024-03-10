@@ -22,7 +22,11 @@ By doing this we realize that in case of Pi-Hole updates related to this page th
 	Then enter command below in putty to set InternetLimiter.py with executable priveledges.
 	sudo chmod +x InternetLimiter.py
 
-7. Configring Pi-Hole
+7.Open /etc/pihole folder and add setGroupStatus.sh file to it.
+	Set it to have executabel priveledged
+	sudo chmod +x setGroupStatus.sh 
+
+8. Configring Pi-Hole
 	A) Using Pi-Hole web interface open Groups page and create "Kids_Group" in it.
 	B) Using Pi-Hole web interface open Clients page then in field "Add a new client" add your kid phone and/or PC MAC 		addresses. Using MAC address identification here seems to work more reliable that using IP address.
 	C) After seeing kids MAC addresses in "List of configured clients" on same page add them to both "Default" and 	"Kids_Group". For other IP that must not be affected by this scripts leave to just "Default" group.
@@ -37,9 +41,9 @@ By doing this we realize that in case of Pi-Hole updates related to this page th
 	F) For Pi-Hole reliable IP/MACs identification in Logs its better to have Pi-Hole also configured as DHCP server. 
 	Go to Settings->DHCP page and set "Enable DHCP" tickbox. Also do not forget to disable DHCP server functionality in 	your Modem/Router to avoid collisions.
 
-8. Do not forget to change default Pi-Hole password from "Raspberry" to something else. Some kids are smarter that we think.
+9. Do not forget to change default Pi-Hole password from "Raspberry" to something else. Some kids are smarter that we think.
 
-9. Configure Rpi to start InternetLimiter.py script at start-up. This can be don by several methods. This one is also working well. 
+10. Configure Rpi to start InternetLimiter.py script at start-up. This can be don by several methods. This one is also working well. 
 	in putty or any other command line interface for Rpi run
 	sudo nano /etc/rc.local
 	add this line at the end of file
