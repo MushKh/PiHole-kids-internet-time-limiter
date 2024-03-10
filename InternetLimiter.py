@@ -60,10 +60,9 @@ if __name__ == "__main__":
 
 
     # Set the Pi-hole API URL and authentication token
-    #api_url = 'http://192.168.2.10/admin/index.php?login'
-    auth_token = '&auth=xxx'
-    
-    api_url = 'http://192.168.2.10/admin/api.php?status'+auth_token
+    #api_url = 'http://'+pi_hole_ip+'/admin/index.php?login'
+    auth_token = '&auth=3f4fa74468f336df5c4cf1d343d160f8948375732f82ea1a057138ae7d35055c'
+    api_url = 'http://'+pi_hole_ip+'/admin/api.php?status'+auth_token
     #auth_token = 'raspberry'
 
     # Set the time interval in seconds for checking internet usage duration
